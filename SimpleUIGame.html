@@ -103,29 +103,6 @@
 return arrayCounter;
 }
 
-    function whoWon(array){
-    let playerCount = 0;
-    let computerCount = 0;
-    for(let i = 0 ; i < array.length ; i ++){
-        if (array[i] == 0){
-                playerCount += 1;
-            } else if(array[i] == 1){
-                computerCount += 1;
-            }
-        }
-    if (playerCount > computerCount){
-    return ("Player won!")
-    } else if (playerCount < computerCount){
-    return ("Computer won!")
-    }
-}
-
-// whoWon(game());
-
-//document.getElementById("rock").addEventListener("click", playRound());
-
-//const buttons = document.querySelectorAll("button");
-
 let playerSelection = ""
 
 const buttons = document.querySelector("#buttons");
@@ -147,6 +124,7 @@ scissorsButton.addEventListener('click', (event) => {
 
 let playerResult = 0;
 let computerResult = 0;
+let gameCounter = 0;
 
 scissors.addEventListener('click', (event) => {
 	playRound();
@@ -154,10 +132,33 @@ scissors.addEventListener('click', (event) => {
 		playerResult += 1;
 	} else if(counter === 1){
 		computerResult += 1;
+	} else if(counter ===2){
+		playerResult += 1;
+		computerResult += 1;
 	}
-	runningScore.textContent = "The counter: " + playerResult
-	playerResultDiv.appendChild(runningScore);
-	computerResultDiv.appendChild(runningScore);
+	playerRunningScore.textContent = "Your Score: " +  + playerResult
+	computerResultDiv.textContent = "Computer Score: " + computerResult
+	playerResultDiv.appendChild(playerRunningScore);
+	computerResultDiv.appendChild(computerRunningScore);
+	gameCounter += 1;
+
+if(gameCounter === 5 && playerResult > computerResult){
+	winner.textContent = "The winner is: YOU" 
+	computerResultDiv.appendChild(winner);
+	playerResult = 0;
+	computerResult = 0;
+	gameCounter = 0;
+	}
+	else if(gameCounter === 5 && playerResult < computerResult){
+	winner.textContent = "The winner is: Computer"
+	computerResultDiv.appendChild(winner);
+	playerResult = 0;
+	computerResult = 0;
+	gameCounter = 0;
+
+	
+	}
+
 });
 
 rockButton.addEventListener('click', (event) => {
@@ -166,10 +167,33 @@ rockButton.addEventListener('click', (event) => {
 		playerResult += 1;
 	} else if(counter === 1){
 		computerResult += 1;
+	} else if(counter ===2){
+		playerResult += 1;
+		computerResult += 1;
+	}	
+	playerRunningScore.textContent = "Your Score: " +  + playerResult
+	computerResultDiv.textContent = "Computer Score: " + computerResult
+	playerResultDiv.appendChild(playerRunningScore);
+	computerResultDiv.appendChild(computerRunningScore);
+	gameCounter += 1;
+
+	if(gameCounter === 5 && playerResult > computerResult){
+	winner.textContent = "The winner is: YOU" 
+	computerResultDiv.appendChild(winner);
+	playerResult = 0;
+	computerResult = 0;
+	gameCounter = 0;
 	}
-	runningScore.textContent = "The counter: " + playerResult
-	playerResultDiv.appendChild(runningScore);
-	computerResultDiv.appendChild(runningScore);
+	else if(gameCounter === 5 && playerResult < computerResult){
+	winner.textContent = "The winner is: Computer"
+	computerResultDiv.appendChild(winner);
+	playerResult = 0;
+	computerResult = 0;
+	gameCounter = 0;
+
+	
+	}
+
 });
 
 paperButton.addEventListener('click', (event) => {
@@ -178,28 +202,44 @@ paperButton.addEventListener('click', (event) => {
 		playerResult += 1;
 	} else if(counter === 1){
 		computerResult += 1;
+	} else if(counter ===2){
+		playerResult += 1;
+		computerResult += 1;
+	}	
+	playerRunningScore.textContent = "Your Score: " +  + playerResult
+	computerResultDiv.textContent = "Computer Score: " + computerResult
+	playerResultDiv.appendChild(playerRunningScore);
+	computerResultDiv.appendChild(computerRunningScore);
+	gameCounter += 1;
+
+	if(gameCounter === 5 && playerResult > computerResult){
+	winner.textContent = "The winner is: YOU" 
+	computerResultDiv.appendChild(winner);
+	playerResult = 0;
+	computerResult = 0;
+	gameCounter = 0;
 	}
-	runningScore.textContent = "The counter: " + playerResult
-	playerResultDiv.appendChild(runningScore);
-	computerResultDiv.appendChild(runningScore);
-});
+	else if(gameCounter === 5 && playerResult < computerResult){
+	winner.textContent = "The winner is: Computer"
+	computerResultDiv.appendChild(winner);
+	playerResult = 0;
+	computerResult = 0;
+	gameCounter = 0;
 
-
-/* buttons.forEach((button) => {
-
-	button.addEventListener('click', () => {
-		alert("You played " + button.id + "Computer played ");
-
-	});
+	}
+	
 
 });
-*/
+
 
 const playerResultDiv = document.querySelector("#playerResult");
 const computerResultDiv = document.querySelector("#computerResult");
 
 const playerRunningScore = document.createElement('p');
 const computerRunningScore = document.createElement('p');
+const winner = document.createElement('p');
+
+
 
 //count to whoever reaches 5 rounds
 
